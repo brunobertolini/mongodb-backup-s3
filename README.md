@@ -13,10 +13,10 @@ docker run -d \
   --env MONGODB_PORT=27017 \
   --env MONGODB_USER=admin \
   --env MONGODB_PASS=password \
-  halvves/mongodb-backup-s3
+  brunobertolini/mongodb-backup-s3
 ```
 
-If you link `halvves/mongodb-backup-s3` to a mongodb container with an alias named mongodb, this image will try to auto load the `host`, `port`, `user`, `pass` if possible. Like this:
+If you link `brunobertolini/mongodb-backup-s3` to a mongodb container with an alias named mongodb, this image will try to auto load the `host`, `port`, `user`, `pass` if possible. Like this:
 
 ```
 docker run -d \
@@ -26,7 +26,7 @@ docker run -d \
   --env BACKUP_FOLDER=a/sub/folder/path/ \
   --env INIT_BACKUP=true \
   --link my_mongo_db:mongodb \
-  halvves/mongodb-backup-s3
+  brunobertolini/mongodb-backup-s3
 ```
 
 Add to a docker-compose.yml to enhance your robotic army:
@@ -34,7 +34,7 @@ Add to a docker-compose.yml to enhance your robotic army:
 For automated backups
 ```
 mongodbbackup:
-  image: 'halvves/mongodb-backup-s3:latest'
+  image: 'brunobertolini/mongodb-backup-s3:latest'
   links:
     - mongodb
   environment:
@@ -48,7 +48,7 @@ mongodbbackup:
 Or use `INIT_RESTORE` with `DISABLE_CRON` for seeding/restoring/starting a db (great for a fresh instance or a dev machine)
 ```
 mongodbbackup:
-  image: 'halvves/mongodb-backup-s3:latest'
+  image: 'brunobertolini/mongodb-backup-s3:latest'
   links:
     - mongodb
   environment:
